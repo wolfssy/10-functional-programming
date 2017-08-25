@@ -19,8 +19,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
+// Client-side HTML routes
 app.get('/new', (request, response) => response.sendFile('new.html', {root: './public'}));
 app.get('/admin', (request, response) => response.sendFile('admin.html', {root: './public'}));
+
+// API routes for the database operations
 app.get('/articles', (request, response) => {
   client.query(`
     SELECT * FROM articles
