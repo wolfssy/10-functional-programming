@@ -79,8 +79,11 @@ var app = app || {};
   Article.allAuthors = () => {
     return Article.all.map(function(authorNames){
       return authorNames.author;
-    }).reduce(function(writer){
-      return writer;
+    }).reduce(function(author, authorNames){
+      if(author.indexOf(authorNames) === -1) {
+        author.push(authorNames);
+      }
+      return author;
     });
   };
 
