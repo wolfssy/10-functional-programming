@@ -84,11 +84,10 @@ var app = app || {};
     return Article.all.map(function(authorNames){
       return authorNames.author;
     }).reduce(function(author, authorNames){
-      if(author.indexOf(authorNames) === -1) {
+      if(author.includes(authorNames))
         author.push(authorNames);
-      }
       return author;
-    });
+    },[]);
   };
 
   Article.numWordsByAuthor = () => {
