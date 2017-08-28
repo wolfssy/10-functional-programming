@@ -47,11 +47,13 @@ var app = app || {};
     // There is no need to push to anything.
 
     // OLD forEach():
-    rawData.map(function(ele) {
-      Article.all.push(new Article(ele));
-    });
+    // rawData.map(function(ele) {
+    //   Article.all.push(new Article(ele));
+    // });
 
-    Article.all = rows.map();
+    Article.all = rows.map(function(newArticle){
+      return new Article(newArticle);
+    });
 
 
   };
