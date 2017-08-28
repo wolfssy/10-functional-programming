@@ -51,6 +51,8 @@ var app = app || {};
       Article.all.push(new Article(ele));
     });
 
+    Article.all = rows.map();
+
 
   };
 
@@ -74,7 +76,7 @@ var app = app || {};
 
   };
 
-  // TODO: Chain together a `map` and a `reduce` call to produce an array of unique author names. You will
+  // DONE: Chain together a `map` and a `reduce` call to produce an array of unique author names. You will
   // probably need to use the optional accumulator argument in your reduce call.
   Article.allAuthors = () => {
     return Article.all.map(function(authorNames){
@@ -96,7 +98,13 @@ var app = app || {};
       // The first property should be pretty straightforward, but you will need to chain
       // some combination of filter, map, and reduce to get the value for the second
       // property.
-
+      return {
+        authorNames: author,
+        wordCount: Article.all.filter(function(value){
+          return value.author === author}).reduce(function(val){
+            return val
+          }).body.split(' ').length
+      }
     })
   };
 
